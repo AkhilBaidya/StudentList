@@ -50,9 +50,7 @@ int main() {
     
     else if (!strcmp(input, "PRINT")) { //if the character array spells out "PRINT"...
       PRINT(studVec);
-    }
-
-    
+    }    
   }
   
   return 0;
@@ -62,6 +60,28 @@ int main() {
 
 void ADD(vector<Student*> &studVec) {
 
+  //ask for new student details
+  cout << "what is the first name of the student?" << endl;
+  cin >> new char firstN[20];
+
+  cout << "last name?" << endl;
+  cin >> new char lastN[20];
+
+  cout << "id?" << endl;
+  cin >> new int ID;
+
+  cout << "GPA?" << endl;
+  cin >> new float GPA;
+
+  //make new struct of that student with those specific details
+  Student newStudent;
+  newStudent.firstName = firstN;
+  newStudent.lastName = lastN;
+  newStudent.id = ID;
+  newStudent.gpa = GPA;
+
+  
+  
 }
 
 void PRINT(vector<Student*> &studVec) {
