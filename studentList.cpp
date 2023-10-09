@@ -29,16 +29,17 @@ void DELETE(vector<Student*> &);
 
 int main() {
   bool running = true;
-  
   vector<Student*> studVec;
-
+  char input[7];
 
   while (running) {
-
-
+    cin >> input;
+    if (!strcmp(input, "QUIT")) { //if the character array spells out "QUIT"...
+      cout << "quitting" << endl;
+      running = false; //quit the program!
+     }
   }
   
-
   return 0;
 }
 
