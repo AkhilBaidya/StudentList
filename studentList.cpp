@@ -34,10 +34,25 @@ int main() {
 
   while (running) {
     cin >> input;
+
     if (!strcmp(input, "QUIT")) { //if the character array spells out "QUIT"...
       cout << "quitting" << endl;
       running = false; //quit the program!
-     }
+    }
+
+    else if (!strcmp(input, "ADD")) { //if the character array spells out "ADD"...
+      ADD(studVec);
+    }
+
+    else if (!strcmp(input, "DELETE")) { //if the character array spells out "DELETE"...
+      DELETE(studVec);
+    }
+    
+    else if (!strcmp(input, "PRINT")) { //if the character array spells out "PRINT"...
+      PRINT(studVec);
+    }
+
+    
   }
   
   return 0;
