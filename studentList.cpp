@@ -2,6 +2,9 @@
 //by Akhil Baidya
 
 #include <iostream>
+#include <cstring>
+#include <vector>
+
 using namespace std;
 
 //DEFINING STRUCTS:
@@ -12,14 +15,14 @@ struct Student {
   char secondName[20];
   int id;
   float gpa; //a Student has a first name, last name, id, and gpa 
-}
+};
 
 
-//FUNCTION PROTOTYPES:
+//FUNCTION PROTOTYPES: referred to Mr. Galbraith's videos for understanding how to write vectors and pass them by reference
 
-void ADD(&vector<Student*> newStudVec);
-void PRINT(&vector<Student*> newStudVec);
-void DELETE(&vector<Student*> newStudVec);
+void ADD(vector<Student*> &);
+void PRINT(vector<Student*> &);
+void DELETE(vector<Student*> &);
   
 
 //MAIN FUNCTION:
@@ -41,14 +44,14 @@ int main() {
 
 //OTHER FUNCTIONS IMPLEMENTED IN MAIN FUNCTION:
 
-void ADD(&vector<Student*> newStudVec) {
+void ADD(vector<Student*> &studVec) {
 
 }
 
-void PRINT(&vector<Student*> newStudVec) {
+void PRINT(vector<Student*> &studVec) {
 
 }
 
-void DELETE(&vector<Student*> newStudVec) {
+void DELETE(vector<Student*> &studVec) {
 
 }
