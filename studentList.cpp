@@ -20,7 +20,7 @@ struct Student {
 
 //FUNCTION PROTOTYPES: referred to Mr. Galbraith's videos for understanding how to write vectors and pass them by reference
 
-void ADD(vector<Student*> &);
+void ADD(vector<Student*> &, int &numStudents);
 void PRINT(vector<Student*> &);
 void DELETE(vector<Student*> &);
   
@@ -31,6 +31,7 @@ int main() {
   bool running = true;
   vector<Student*> studVec;
   char input[7];
+  int numStudents = 0;
 
   while (running) {
     cin >> input;
@@ -60,34 +61,37 @@ int main() {
 
 void ADD(vector<Student*> &studVec) {
 
+  char firstN[20];
+  char lastN[20];
+  int ID;
+  float GPA;
+  Student* stuPnt = new Student; //create a new pointer to a new Struct
+  
   //ask for new student details
   cout << "what is the first name of the student?" << endl;
-  cin >> new char firstN[20];
+  cin >> firstN;
+  strcpy((*stuPnt).firstName, firstN); //need to dereference pointer to set variables in new Struct to inputs
 
   cout << "last name?" << endl;
-  cin >> new char lastN[20];
+  cin >> lastN;
+  strcpy((*stuPnt).secondName, lastN);
 
   cout << "id?" << endl;
-  cin >> new int ID;
+  cin >> ID;
+  (*stuPnt).id = ID;
 
   cout << "GPA?" << endl;
-  cin >> new float GPA;
+  cin >> GPA;
+  (*stuPnt).gpa = GPA;
 
-  //make new struct of that student with those specific details
-  Student newStudent;
-  newStudent.firstName = firstN;
-  newStudent.lastName = lastN;
-  newStudent.id = ID;
-  newStudent.gpa = GPA;
-
-  
-  
+  studVec.push_back(stuPnt); //puts new pointer in the vector of pointers
+  return;
 }
 
 void PRINT(vector<Student*> &studVec) {
-
+  return;
 }
 
 void DELETE(vector<Student*> &studVec) {
-
+  return;
 }
