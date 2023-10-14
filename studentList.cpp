@@ -20,7 +20,7 @@ struct Student {
 
 //FUNCTION PROTOTYPES: referred to Mr. Galbraith's videos for understanding how to write vectors and pass them by reference
 
-void ADD(vector<Student*> &, int &numStudents);
+void ADD(vector<Student*> &);
 void PRINT(vector<Student*> &);
 void DELETE(vector<Student*> &);
   
@@ -89,6 +89,19 @@ void ADD(vector<Student*> &studVec) {
 }
 
 void PRINT(vector<Student*> &studVec) {
+
+  for (vector<Student*>::iterator student = studVec.begin(); student != studVec.end(); student++) { //iterate through each student in the vector
+
+    cout << "Students:" << endl;
+
+    cout << (*student) -> firstName << " "; //print out the first and last name of the student
+    cout << (*student) -> secondName << ",";
+
+    cout << "ID: " << (*student) -> id << ","; //print out the student's id
+    cout << "GPA: " << (*student) -> gpa << endl; //print out the student's gpa
+    
+  }
+
   return;
 }
 
