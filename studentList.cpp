@@ -34,10 +34,11 @@ int main() {
   int numStudents = 0;
 
   while (running) {
+    cout << "What would you like to do? (ADD, DELETE, PRINT Students)";
     cin >> input;
 
     if (!strcmp(input, "QUIT")) { //if the character array spells out "QUIT"...
-      cout << "quitting" << endl;
+      cout << "quitting student list program" << endl;
       running = false; //quit the program!
     }
 
@@ -85,6 +86,7 @@ void ADD(vector<Student*> &studVec) {
   (*stuPnt).gpa = GPA;
 
   studVec.push_back(stuPnt); //puts new pointer in the vector of pointers
+  cout << "added student" << endl;
   return;
 }
 
@@ -95,14 +97,14 @@ void PRINT(vector<Student*> &studVec) {
     cout << "Students:" << endl;
 
     cout << (*student) -> firstName << " "; //print out the first and last name of the student
-    cout << (*student) -> secondName << ",";
+    cout << (*student) -> secondName << ", ";
 
-    cout << "ID: " << (*student) -> id << ","; //print out the student's id
+    cout << "ID: " << (*student) -> id << ", "; //print out the student's id
     cout << "GPA: " << (*student) -> gpa << endl; //print out the student's gpa
     
   }
-
   return;
+
 }
 
 void DELETE(vector<Student*> &studVec) {
