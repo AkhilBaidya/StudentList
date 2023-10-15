@@ -100,8 +100,10 @@ void PRINT(vector<Student*> &studVec) {
     cout << (*student) -> secondName << ", ";
 
     cout << "ID: " << (*student) -> id << ", "; //print out the student's id
+
+    cout.setf(ios::showpoint); //want trailing zeroes in gpa (5 as 5.00)
+    cout.precision(3); //(restrict precision to three, allowing two decimal places fo gpa)
     cout << "GPA: " << (*student) -> gpa << endl; //print out the student's gpa
-    
   }
   return;
 
