@@ -38,7 +38,7 @@ int main() {
     cin >> input;
 
     for (int i = 0; i < strlen(input); i++) {
-      input[i] = toupper(input[i]);
+      input[i] = toupper(input[i]); //referred to https://cplusplus.com/reference/cctype/toupper/ for toupper() command
     }
     
     if (!strcmp(input, "QUIT")) { //if the character array spells out "QUIT"...
@@ -127,7 +127,7 @@ void DELETE(vector<Student*> &studVec) {
   
   int rmID;
   int count = 0; //counts the distance each "student" is away from the beginning
-  int position; //the position of the student needed to be deleted
+  int position = -1; //the position of the student needed to be deleted
  
   cout << "Which student do you want to remove from the student list? (Give ID)" << endl;
   cin >> rmID; //get the id of the student we want to remove
@@ -141,9 +141,15 @@ void DELETE(vector<Student*> &studVec) {
       position = count; //this is the position of the student we want removed!
     }
   }
-  
-  studVec.erase(studVec.begin() + position - 1); //delete student
-  cout << "removed student" << endl;
+
+    if (position != -1) { //if there is a student (position) with that id
+      studVec.erase(studVec.begin() + position - 1); //delete student
+      cout << "removed student" << endl;
+    }
+
+    else {
+      cout << "student not found" << endl;
+    }
   
   return;
 }
