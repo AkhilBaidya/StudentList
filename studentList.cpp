@@ -34,7 +34,7 @@ int main() {
   int numStudents = 0;
 
   while (running) {
-    cout << "What would you like to do? (ADD, DELETE, PRINT Students)";
+    cout << "What would you like to do? (ADD, DELETE, PRINT Students)" << endl;
     cin >> input;
 
     if (!strcmp(input, "QUIT")) { //if the character array spells out "QUIT"...
@@ -108,5 +108,22 @@ void PRINT(vector<Student*> &studVec) {
 }
 
 void DELETE(vector<Student*> &studVec) {
+  //referred to this source for how to delete objects in a vector (with the .erase() command:
+
+  //https://www.geeksforgeeks.org/cpp-stl-cheat-sheet/#T3
+
+  /*This source shows how the .erase() command takes the position of an object
+    in a vector and deletes the object at that position.
+
+    The source also shows how the beginning position (of the first element
+    in the vector) can be accessed through vectorName.begin())
+   */
+  
+  int rmID;
+
+  cout << "Which student do you want to remove from the student list? (Give ID)" << endl;
+  cin >> rmID; //get the id of the student we want to remove
+  
+
   return;
 }
