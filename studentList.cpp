@@ -37,6 +37,10 @@ int main() {
     cout << "What would you like to do? (ADD, DELETE, PRINT Students)" << endl;
     cin >> input;
 
+    for (int i = 0; i < strlen(input); i++) {
+      input[i] = toupper(input[i]);
+    }
+    
     if (!strcmp(input, "QUIT")) { //if the character array spells out "QUIT"...
       cout << "quitting student list program" << endl;
       running = false; //quit the program!
