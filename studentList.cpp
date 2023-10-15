@@ -120,10 +120,24 @@ void DELETE(vector<Student*> &studVec) {
    */
   
   int rmID;
-
+  int count = 0; //counts the distance each "student" is away from the beginning
+  int position; //the position of the student needed to be deleted
+ 
   cout << "Which student do you want to remove from the student list? (Give ID)" << endl;
   cin >> rmID; //get the id of the student we want to remove
-  
 
+
+    for (vector<Student*>::iterator student = studVec.begin(); student != studVec.end(); student++) { //iterate through each student in the vector
+
+    ++count; //increase the count (creates a "number" for each students position from studVec.begin()
+
+    if (((*student) -> id) == rmID) { //if the student's id is equal to the id being searched for..
+      position = count; //this is the position of the student we want removed!
+    }
+  }
+  
+  studVec.erase(studVec.begin() + position - 1); //delete student
+  cout << "removed student" << endl;
+  
   return;
 }
