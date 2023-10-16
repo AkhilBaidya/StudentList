@@ -32,7 +32,12 @@ The same video was also used to write the iterator when printing out the student
 3.Referred to GeeksforGeeks website for learning how to delete objects in a vector (with the .erase() command):https://www.geeksforgeeks.org/cpp-stl-cheat-sheet/#T3
 
 This source shows how the .erase() command takes the position of an object in a vector and deletes the object at that position. The source also shows how the beginning position (of the first element in the vector) can be accessed through vectorName.begin())
- */
+
+4. Code for making Structs was based on Mr. Galbraith's video on Structs in Canvas:https://www.youtube.com/watch?v=vMCKhGuROnk&t=1s
+
+5. Code for adding trailing zeroes and changing the preciseness of numbers when printed out was based on Mr. Galbraith's video on Formatting Outputs in Canvas:
+https://www.youtube.com/watch?v=kv8XRxxaD8Q&t=290s
+*/
 
 
 #include <iostream>
@@ -42,61 +47,69 @@ This source shows how the .erase() command takes the position of an object in a 
 using namespace std;
 
 //DEFINING STRUCTS:
+struct Student { //Struct code based on Mr. Galbraith's video on Structs in Canvas (link in heading notes)
 
-struct Student {
-
-  char firstName[20]; //Struct code based on Mr. Galbraith's video on Structs in Canvas
+  char firstName[20];
   char secondName[20];
   int id;
   float gpa; //a Student has a first name, last name, id, and gpa 
 };
 
 
-//FUNCTION PROTOTYPES: referred to Mr. Galbraith's videos for understanding how to write vectors and pass them by reference
+//FUNCTION PROTOTYPES:
 
-void ADD(vector<Student*> &);
+/*Referred to Mr. Galbraith's videos for understanding how to pass vectors by reference (link in heading notes) */
+
+void ADD(vector<Student*> &); 
 void PRINT(vector<Student*> &);
 void DELETE(vector<Student*> &);
   
 
 //MAIN FUNCTION:
 
-int main() {
+int main() { //this is where the user will input commands to edit a student list
+  
   bool running = true;
   vector<Student*> studVec;
   char input[7];
-  int numStudents = 0;
 
   while (running) {
+    
     cout << "What would you like to do? (ADD, DELETE, PRINT Students)" << endl;
     cin >> input;
 
     for (int i = 0; i < strlen(input); i++) {
-      input[i] = toupper(input[i]); //referred to https://cplusplus.com/reference/cctype/toupper/ for toupper() command
+      input[i] = toupper(input[i]); //convert user input to upper case (add and ADD will be considered the same)
+
+      //referred to https://cplusplus.com/reference/cctype/toupper/ for toupper() command.
     }
-    
-    if (!strcmp(input, "QUIT")) { //if the character array spells out "QUIT"...
+
+    if (!strcmp(input, "QUIT")) { //if the character array (user input) spells out "QUIT"...
       cout << "quitting student list program" << endl;
-      running = false; //quit the program!
+      running = false; //quit the program! (the program continues and loops if running = true)
     }
 
     else if (!strcmp(input, "ADD")) { //if the character array spells out "ADD"...
-      ADD(studVec);
+      ADD(studVec); //add a student
     }
 
     else if (!strcmp(input, "DELETE")) { //if the character array spells out "DELETE"...
-      DELETE(studVec);
+      DELETE(studVec); //delete a student
     }
     
     else if (!strcmp(input, "PRINT")) { //if the character array spells out "PRINT"...
-      PRINT(studVec);
+      PRINT(studVec); //print out the students
     }    
   }
-  
   return 0;
 }
 
 //OTHER FUNCTIONS IMPLEMENTED IN MAIN FUNCTION:
+
+
+/*The ADD() function takes in the current vector of students (student pointers) and
+creates a new student (and student pointer that is added to the vector).
+ */
 
 void ADD(vector<Student*> &studVec) {
 
