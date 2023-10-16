@@ -40,6 +40,8 @@ https://www.youtube.com/watch?v=kv8XRxxaD8Q&t=290s
 
 6. Learned how to create pointer, such as Student* stuPnt = new Student;, based on the Double Pointer visualizer provided by 
 Mr. Galbraith on Canvas: https://pythontutor.com/visualize.html#mode=display
+
+7. Help from Mr. Galbraith for learning about "delete" command (to remove a student Struct)
 */
 
 
@@ -211,7 +213,10 @@ void DELETE(vector<Student*> &studVec) {
   }
 
     if (position != -1) { //if there is a student (position) with that id
-      studVec.erase(studVec.begin() + position - 1); //delete student at that position
+      studVec.erase(studVec.begin() + position - 1); //remove student pointer at that position from the vector
+
+      delete *(studVec.begin() + position - 1); //help from Mr. Galbraith for delete command (deletes the actual Struct pointed to by the student pointer additionally)
+
       cout << "removed student" << endl;
     }
 
