@@ -1,6 +1,40 @@
 //C++ Programming: Student List Project
 //by Akhil Baidya
 
+//Date of Submission (mm/dd/yy): 10/16/23
+
+/* Notes: In this program, the user will be able to edit a list of students.
+The user can input the commands "ADD," "DELETE," "PRINT" and "QUIT." QUIT
+exits the program.
+
+   1. ADD registers a new student in the list. The user inputs the student's names,
+   id, and gpa (the id and gpa must be inputted as numbers).
+
+   2. DELETE removes a student from the student list. The user must input a student
+   id to identify this student to be removed.
+
+   3. PRINT displays all the students currently registered in the student list and their info.
+ */
+
+
+/* Credits: 
+
+1. In order to understand the syntax of creating vectors and passing them in by reference in function prototypes and functions, Mr. Galbraith's video on Vectors in Canvas was observed: https://www.youtube.com/watch?v=KD_pItB8Ygg&t=1s (video url).
+
+The same video was also referred to in order to understand how to deference pointers (with (*pointerName)) and access aspects of the object the pointer is pointed towards using "->."
+
+The same video was also used to write the iterator when printing out the students in the student vector in the PRINT function.
+
+
+2. Referred to cplusplus.com (https://cplusplus.com/reference/cctype/toupper/) to find toupper() command which was used to standardize user command inputs (such as "PRINT" or "pRinT") to upper case.
+
+
+3.Referred to GeeksforGeeks website for learning how to delete objects in a vector (with the .erase() command):https://www.geeksforgeeks.org/cpp-stl-cheat-sheet/#T3
+
+This source shows how the .erase() command takes the position of an object in a vector and deletes the object at that position. The source also shows how the beginning position (of the first element in the vector) can be accessed through vectorName.begin())
+ */
+
+
 #include <iostream>
 #include <cstring>
 #include <vector>
