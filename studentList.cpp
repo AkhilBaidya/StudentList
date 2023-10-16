@@ -209,13 +209,13 @@ void DELETE(vector<Student*> &studVec) {
 
     if (((*student) -> id) == rmID) { //if the student's id is equal to the id being searched for..
       position = count; //this is the position of the student we want removed!
+      delete (*student); //help from Mr. Galbraith for delete command (deletes the Struct pointed to by the student pointer - removes the actual student)
+
     }
   }
 
     if (position != -1) { //if there is a student (position) with that id
       studVec.erase(studVec.begin() + position - 1); //remove student pointer at that position from the vector
-
-      delete *(studVec.begin() + position - 1); //help from Mr. Galbraith for delete command (deletes the actual Struct pointed to by the student pointer additionally)
 
       cout << "removed student" << endl;
     }
