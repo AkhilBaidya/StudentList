@@ -37,6 +37,9 @@ This source shows how the .erase() command takes the position of an object in a 
 
 5. Code for adding trailing zeroes and changing the preciseness of numbers when printed out was based on Mr. Galbraith's video on Formatting Outputs in Canvas:
 https://www.youtube.com/watch?v=kv8XRxxaD8Q&t=290s
+
+6. Learned how to create pointer, such as Student* stuPnt = new Student;, based on the Double Pointer visualizer provided by 
+Mr. Galbraith on Canvas: https://pythontutor.com/visualize.html#mode=display
 */
 
 
@@ -68,14 +71,16 @@ void DELETE(vector<Student*> &);
 //MAIN FUNCTION:
 
 int main() { //this is where the user will input commands to edit a student list
-  
-  bool running = true;
-  vector<Student*> studVec;
-  char input[7];
+
+
+  //Variables:
+  bool running = true; //loops the student list program
+  vector<Student*> studVec; //contains pointers to the registered students
+  char input[7]; //an array to store the user's inputs (max length is 6)
 
   while (running) {
     
-    cout << "What would you like to do? (ADD, DELETE, PRINT Students)" << endl;
+    cout << "What would you like to do? (ADD, DELETE, PRINT Students, QUIT program)" << endl;
     cin >> input;
 
     for (int i = 0; i < strlen(input); i++) {
@@ -113,56 +118,72 @@ creates a new student (and student pointer that is added to the vector).
 
 void ADD(vector<Student*> &studVec) {
 
-  char firstN[20];
-  char lastN[20];
-  int ID;
-  float GPA;
-  Student* stuPnt = new Student; //create a new pointer to a new Struct
+  //Variables:
+  char firstN[20]; //new student's first name (taken from input)
+  char lastN[20]; //new student's last name (taken from input)
+  int ID; // new student's id (taken from input)
+  float GPA; // new student's gpa (taken from input)
+  Student* stuPnt = new Student; //create a new pointer to a new Struct (a new Student)
+  //(learned how to create pointer from Double Pointer visualizer provided in Canvas at https://pythontutor.com/visualize.html#mode=display)  
   
-  //ask for new student details
-  cout << "what is the first name of the student?" << endl;
+  //Ask for new student details:
+  cout << "what is the first name of the student?" << endl; //adding new first name
   cin >> firstN;
-  strcpy((*stuPnt).firstName, firstN); //need to dereference pointer to set variables in new Struct to inputs
+  strcpy((*stuPnt).firstName, firstN); //need to dereference pointer to set variables in new Struct (new student) equal to inputs (through strcpy())
 
-  cout << "last name?" << endl;
+  cout << "last name?" << endl; //do the same for the new last name
   cin >> lastN;
   strcpy((*stuPnt).secondName, lastN);
 
-  cout << "id?" << endl;
+  cout << "id?" << endl; //do the same for the new id
   cin >> ID;
   (*stuPnt).id = ID;
 
-  cout << "GPA?" << endl;
+  cout << "GPA?" << endl; //do the same for the new gpa
   cin >> GPA;
   (*stuPnt).gpa = GPA;
 
-  studVec.push_back(stuPnt); //puts new pointer in the vector of pointers
+  studVec.push_back(stuPnt); //puts new pointer (pointing to new student created) in the vector of pointers
   cout << "added student" << endl;
+  
   return;
 }
 
+/* The PRINT() function takes in the current vector of students (student pointers) and
+prints out each student registered (and their info).
+*/
 void PRINT(vector<Student*> &studVec) {
 
+  cout << "Students:" << endl;
+  
   for (vector<Student*>::iterator student = studVec.begin(); student != studVec.end(); student++) { //iterate through each student in the vector
 
-    cout << "Students:" << endl;
+    /*referred to Mr. Galbraith's video on Vectors in Canvas to learn about using "->" to access aspects of an object pointed at
+     (link in heading comments)*/
 
     cout << (*student) -> firstName << " "; //print out the first and last name of the student
     cout << (*student) -> secondName << ", ";
 
     cout << "ID: " << (*student) -> id << ", "; //print out the student's id
 
+    /*referred to Mr. Galbraith's video on Formatting Outputs in Canvas to learn about .setf() and .precision()
+      (link in heading comments)*/
+    
     cout.setf(ios::showpoint); //want trailing zeroes in gpa (5 as 5.00)
-    cout.precision(3); //(restrict precision to three, allowing two decimal places fo gpa)
+    cout.precision(3); //restrict precision to three, allowing two decimal places for gpa
     cout << "GPA: " << (*student) -> gpa << endl; //print out the student's gpa
   }
+  
   return;
 
 }
 
+/* The DELETE() function takes in the current vector of students (student pointers) and
+prompts the user for a student id. It then erases the student with that id from the student list.
+*/
 void DELETE(vector<Student*> &studVec) {
-  //referred to this source for how to delete objects in a vector (with the .erase() command:
 
+  //referred to this source for how to delete objects in a vector (with the .erase() command:
   //https://www.geeksforgeeks.org/cpp-stl-cheat-sheet/#T3
 
   /*This source shows how the .erase() command takes the position of an object
@@ -172,7 +193,7 @@ void DELETE(vector<Student*> &studVec) {
     in the vector) can be accessed through vectorName.begin())
    */
   
-  int rmID;
+  int rmID; //the id of the student that will be removed
   int count = 0; //counts the distance each "student" is away from the beginning
   int position = -1; //the position of the student needed to be deleted
  
@@ -182,7 +203,7 @@ void DELETE(vector<Student*> &studVec) {
 
     for (vector<Student*>::iterator student = studVec.begin(); student != studVec.end(); student++) { //iterate through each student in the vector
 
-    ++count; //increase the count (creates a "number" for each students position from studVec.begin()
+    ++count; //increase the count (creates a "number" for each students position from studVec.begin())
 
     if (((*student) -> id) == rmID) { //if the student's id is equal to the id being searched for..
       position = count; //this is the position of the student we want removed!
@@ -190,7 +211,7 @@ void DELETE(vector<Student*> &studVec) {
   }
 
     if (position != -1) { //if there is a student (position) with that id
-      studVec.erase(studVec.begin() + position - 1); //delete student
+      studVec.erase(studVec.begin() + position - 1); //delete student at that position
       cout << "removed student" << endl;
     }
 
